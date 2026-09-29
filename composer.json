@@ -1,0 +1,12 @@
+{
+    "name": "supportflow/support-flow",
+    "description": "Sistema SupportFlow",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SupportFlow\\": "src/"
+        }
+    },
+    "require": {}
+}
