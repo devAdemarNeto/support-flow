@@ -7,16 +7,28 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 session_start();
 
-?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupportFlow</title>
-</head>
-<body>
-    <h1>SupportFlow</h1>
-    <p>Aplicação inicializada com sucesso.</p>
-</body>
-</html>
+use SupportFlow\Utils\Router;
+
+$router = new Router();
+
+$router->get('/', function () {
+    echo '<!DOCTYPE html>' . PHP_EOL;
+    echo '<html lang="pt-BR">' . PHP_EOL;
+    echo '<head>' . PHP_EOL;
+    echo '    <meta charset="UTF-8">' . PHP_EOL;
+    echo '    <meta name="viewport" content="width=device-width, initial-scale=1.0">' . PHP_EOL;
+    echo '    <title>SupportFlow</title>' . PHP_EOL;
+    echo '</head>' . PHP_EOL;
+    echo '<body>' . PHP_EOL;
+    echo '    <h1>SupportFlow</h1>' . PHP_EOL;
+    echo '    <p>Aplicação inicializada com sucesso.</p>' . PHP_EOL;
+    echo '</body>' . PHP_EOL;
+    echo '</html>' . PHP_EOL;
+});
+
+$router->get('/health', function () {
+    echo 'OK';
+});
+
+$router->dispatch();
+
