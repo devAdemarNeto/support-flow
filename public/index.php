@@ -1,13 +1,22 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-session_start();
-
+use SupportFlow\Utils\Env;
 use SupportFlow\Utils\Router;
+
+Env::load(dirname(__DIR__) . '/.env');
+
+$appConfig = require dirname(__DIR__) . '/config/app.php';
+
+if (!empty($appConfig['debug'])) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+} else {
+    ini_set('display_errors', '0');
+}
+
+session_start();
 
 $router = new Router();
 
@@ -31,4 +40,5 @@ $router->get('/health', function () {
 });
 
 $router->dispatch();
+
 
